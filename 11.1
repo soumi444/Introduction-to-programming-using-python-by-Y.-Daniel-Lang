@@ -1,0 +1,24 @@
+# Find out the sum of elements column by column in a multi-dimensional list
+
+def sumColumns(n,m):
+
+def sumColumns(m,columnIndex):
+    total= 0
+    for row in range(len(m)):
+        total+=m[row][columnIndex]
+    return total
+
+def getMatrix(n,m):
+    matrix = []
+    for row in range(n):
+
+        line = eval(input('Enter a'+str(n)+'' -by-''+str(m)+'matrix row for row'+str(row)+':').strip().split()
+        if len(line) !=m :
+            print("Each line needs to have",m,"elements.Try again!")
+            line = eval(input('Enter a'+str(n)+'' -by-''+str(m)+'matrix row for row'+str(row)+':').strip().split()
+        matrix.append([eval(x) for x in line])
+    return matrix
+
+mat = getMatrix(3,4)
+for i in range(4):
+    print("Sum of the elements for the column",i,"is",sumColumn(mat,i))
