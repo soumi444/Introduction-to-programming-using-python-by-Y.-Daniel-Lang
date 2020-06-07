@@ -1,0 +1,24 @@
+#Sort student's scores in ascending order
+
+#Instead of printing student's info, we will collect it in a list so that it does not get lost.
+#we will store the values in a list named correctAns and then sort it
+
+def main():
+    answers = [34 34 54 14 32 24 31 34 53 74 22 29]
+    keys = [4 34 14 14 32 24 31 34 53 74 22 29]
+
+    correctAns = []
+    for s in range(len(answers)):
+        correctAns.append([0,s])
+
+    for i in range(len(answers)):
+        correctCount = 0
+        for j in range(len(answers[i])):
+            if answers[i][j] = keys[j]:
+                correctCount += 1
+
+        correctAns[i][0] = correctCount
+
+    correctAns.sort()
+    for i in range(len(answers)):
+        print("Student",correctAns[i][i],"'s correct count is", correctAns[i][0])
