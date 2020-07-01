@@ -1,0 +1,91 @@
+import os
+import time
+import random
+
+board = ["", " ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+
+def print_header():
+    print("Tic-Tac-Toe game. Your choices are defined. They must be from 1 to 9")
+
+
+def print_board():
+    print("" + board[1] + "|" + board[2] + "|" + board[3] + '')
+    print("-----")
+    print("" + board[4] + "|" + board[5] + "|" + board[6] + '')
+    print("-----")
+    print("" + board[7] + "|" + board[8] + "|" + board[9] + '')
+
+def is_Winner(board, player):
+    if ( board[1] == "player" and board[2] == "player" and board[3] == "player") or \
+        (board[4] == "player" and board[5] == "player" and board[6] == "player") or \
+        (board[7] == "player" and board[8] == "player" and board[9] == "player") or \
+        (board[1] == "player" and board[4] == "player" and board[7] == "player") or \
+        (board[2] == "player" and board[5] == "player" and board[8] == "player") or \
+        (board[3] == "player" and board[6] == "player" and board[9] == "player") or \
+        (board[1] == "player" and board[5] == "player" and board[9] == "player") or \
+        (board[3] == "player" and board[5] == "player" and board[7] == "player") :
+        return True
+    else:
+        return False
+
+def is_board_full(board):
+    if " " in board:
+        return False
+    else:
+        return True
+
+
+while True:
+    os.system("cls")
+    print_header()
+    print_board()
+
+    choice = input("Please enter an empty space for X:")
+    choice = int(choice)
+
+    if board[choice] == " ":
+        board[choice] = "X"
+    else:
+        print("Sorry that space is not empty!")
+        time.sleep(1)
+
+    if is_Winner(board,"X"):
+        os.system("cls")
+        print_header()
+        print_board()
+        print("Congratulations! X has won!")
+        break
+
+
+    if is_board_full(board):
+        print("Tie")
+        break
+
+    os.system("cls")
+    print_header()
+    print_board()
+
+    choice = input("Please enter an empty space for O:")
+    choice = int(choice)
+
+    if board[choice] == " ":
+        board[choice] = "O"
+    else:
+        print("Sorry that space is not empty!")
+        time.sleep(1)
+
+    if is_Winner(board,"O"):
+        os.system("cls")
+        print_header()
+        print_board()
+        print("Congratulations! O has won!")
+        break
+
+    if is_board_full(board):
+        print("Tie")
+        break
+
+
+
+
