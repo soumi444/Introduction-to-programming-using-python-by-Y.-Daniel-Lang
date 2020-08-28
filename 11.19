@@ -1,0 +1,46 @@
+def isConsecutiveFour(values):
+    return fourInARow(values) or fourInARow(transpose(values)) or fourInADiagonal(values)
+
+def fourInARow(values):
+    for row in range(len(values)):
+        for col in range(len(values[row])-3):
+            if values[row][col] == values[row][col+1] == values[row][col+2] == values[row][col+3]:
+                return True
+    return False
+
+def transpose(matrix):
+    m=[]
+    rowSize, columnSize = len(matrix), len(matrix[0])
+    for row in range(columnSize):
+        m.append([])
+        for column in range(rowSize):
+            m[row].append(matrix[column][row])
+    return m
+
+def fourInADiagonal(values):
+    for row in range(len(values)):
+        for col in range(len(values[row])):
+            if row<len(values)-3 and col<len(values)-3:
+                if values[row][col] == values[row+1][col+1] == values[row+2][col+2] == values[row+3][col+3]:
+                    return True
+                if row>2 and col < len(values)-3:
+                    if values[row][col] == values[row-1][col+1] == values[row-2][col+2] == values[row-3][col+3]:
+                        return True
+
+    return False
+
+def main():
+    rowSize = eval(input("Enter the number of rows:"))
+    colSize = eval(input("Enter the number of columns:"))
+
+    m = []
+    for row in range(rowSize):
+        m.append([eval(x) for x in input("Enter row:").split()])
+        while len(m[row]) != colSize:
+            print("There should be", colSize,"elements in the row", str(row) + '.')
+            m[row] = [eval(x) for x in input("Enter row:").split()]
+
+    print("4 consecutive elements:", isConsecutiveFour(m))
+
+main()
+
