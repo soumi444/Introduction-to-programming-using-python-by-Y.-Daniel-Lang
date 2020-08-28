@@ -1,0 +1,21 @@
+def sameLine(points):
+  x0 ,y0 = points[0]
+  x1,y1 = points[1]
+  
+  epsilon=le-6
+  
+  for i in range(2,len(points)):
+    xi,yi = points[i]
+    if abs((yi-y0)/(xi - x0) - slope) > epsilon:
+      return False
+  return True
+  
+def main():
+  user_input = input("Enter five points:").split()
+  points = [[eval(user_input[i]), eval(user_input[i+1])] for i in range(0,len(user_input),2)]
+  
+  yayOrNay = '' if sameLine(points) else 'not'
+  print("The five points are" + yayOrNay + 'on the same line')
+  
+  main()
+  
